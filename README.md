@@ -115,12 +115,25 @@ A catch-all section for:
 
 This vault wouldn’t be possible without the help of these amazing resources:
 
-- **Plugins:** [Plugin Name](#) – Thanks for enhancing the Obsidian experience.
-- **CSS Snippets:** [CSS Snippet Name](#) – For making everything look sharp.
-- **Entertainment Scripts:** [Script Repository](#) – For the movie, TV show, and games functionalities.
-- **Theme:** [Theme Name](#) – For the overall visual appeal.
+###### Plugins
+- [obsidian-calendar-plugin](https://github.com/liamcain/obsidian-calendar-plugin)
+- [obsidian-charts](https://github.com/phibr0/obsidian-charts)
+- [obsidian-custom-js](https://github.com/saml-dev/obsidian-custom-js)
+- [obsidian-dataview](https://github.com/blacksmithgu/obsidian-dataview)
+- [obsidian-folder-notes](https://github.com/LostPaul/obsidian-folder-notes)
+- [obsidian-force-view-mode-of-note](https://github.com/bwydoogh/obsidian-force-view-mode-of-note)
+- [obsidian-js-engine-plugin](https://github.com/mProjectsCode/obsidian-js-engine-plugin)
+- [obsidian-lazy-plugins](https://github.com/alangrainger/obsidian-lazy-plugins)
+- [obsidian-meta-bind-plugin](https://github.com/mProjectsCode/obsidian-meta-bind-plugin)
+- [MetaEdit](https://github.com/chhoumann/MetaEdit)
+- [obsidian-multi-tag](https://github.com/technohiker/obsidian-multi-tag)
+- 
 
-Feel free to replace the placeholder links with your actual resource URLs.
+
+- **CSS Snippets:** 
+- **Entertainment Scripts:** 
+- **Theme:**
+
 
 ---
 
