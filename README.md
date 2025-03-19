@@ -78,6 +78,8 @@ This section is divided into three main note folders:
 - Now you can just click on the quickadd tool on the left side toolbar right above daily notes and add in your media of category.
 - Theres no 1-10 rating. i use a Weak,Fair,Strong and Mighty rating. similar to opencritics approach.
 
+![API Key](https://github.com/masterelf425900/Reflections-an-obsidian-vault/blob/main/Images/API%20Key.avif)
+
 **Poster Setup:**
 - Vertical/portrait posters from the official databases are generally of lower quality and dont match the overall look of the vault setup. looks wonky and too much empty space with vertical posters.
 - Download a wide or horizontal poster by just Googling. (adding any streaming service names makes them easier to find)
