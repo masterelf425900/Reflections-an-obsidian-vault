@@ -116,6 +116,7 @@ A catch-all section for:
 This vault wouldn’t be possible without the help of these amazing resources:
 
 ###### Plugins
+
 - [obsidian-calendar-plugin](https://github.com/liamcain/obsidian-calendar-plugin)
 - [obsidian-charts](https://github.com/phibr0/obsidian-charts)
 - [obsidian-custom-js](https://github.com/saml-dev/obsidian-custom-js)
@@ -127,13 +128,21 @@ This vault wouldn’t be possible without the help of these amazing resources:
 - [obsidian-meta-bind-plugin](https://github.com/mProjectsCode/obsidian-meta-bind-plugin)
 - [MetaEdit](https://github.com/chhoumann/MetaEdit)
 - [obsidian-multi-tag](https://github.com/technohiker/obsidian-multi-tag)
-- 
+- [obsidian-periodic-notes](https://github.com/liamcain/obsidian-periodic-notes)
+- [quickadd](https://github.com/chhoumann/quickadd)
+- [Templater](https://github.com/SilentVoid13/Templater)
 
+###### CSS Snippet
 
-- **CSS Snippets:** 
-- **Entertainment Scripts:** 
-- **Theme:**
+- [Obsidian-Colored-Sidebar](https://github.com/CyanVoxel/Obsidian-Colored-Sidebar)
 
+###### Entertainment Scripts
+
+- [Create a movie database](https://minimal.guide/guides/movie-database)
+
+###### Theme
+
+- [shimmering:focus](https://github.com/chrisgrieser/shimmering-focus)
 
 ---
 
