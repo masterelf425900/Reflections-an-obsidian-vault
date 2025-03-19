@@ -1,0 +1,61 @@
+/* Custom Table Style for Obsidian */
+/* Define custom properties for spacing */
+:root {
+  --row-gap: 10px;
+  --first-row-gap: -20px;
+  --border-color: rgb(87, 92, 117); /* This is kept for any other styling needs */
+  --side-margin: 10px;
+  --vertical-margin: 10px;
+  --column-gap: 10px;
+}
+
+/* Ensure gaps between cells only if .table-shade class is present */
+.markdown-preview-view.table-shade table {
+  border-collapse: separate;
+  border-spacing: var(--row-gap) var(--column-gap);
+  width: calc(100% - 2 * var(--side-margin));
+  margin: var(--vertical-margin) auto;
+  max-width: calc(100% - 2 * var(--side-margin));
+}
+
+/* Add shadows to all columns (table cells) */
+.markdown-preview-view.table-shade table th,
+.markdown-preview-view.table-shade table td {
+  box-shadow: 0 0.2rem 0.5rem var(--background-modifier-box-shadow); /* Apply shadow to cells */
+  border: none; /* Set border to none to eliminate visible lines */
+  background-color: var(--background-primary); /* Match the note's background color */
+  padding: 0; /* Removes default padding for a cleaner look */
+  text-align: center;
+  position: relative; /* Positioning context for the shadow */
+}
+
+/* Combine borders for even rows by setting a bottom border to background color */
+.markdown-preview-view.table-shade table tr:nth-child(odd) td {
+  border-bottom: 0; /* No bottom border for odd rows */
+}
+
+/* Disable bottom border for even rows to combine them visually */
+.markdown-preview-view.table-shade table tr:nth-child(even) td {
+  border-top: 0; /* No top border for even rows to combine with the previous odd row */
+}
+
+/* Remove any hover shadow effect */
+.markdown-preview-view.table-shade table th:hover,
+.markdown-preview-view.table-shade table td:hover {
+  box-shadow: 0 0.2rem 0.5rem var(--background-modifier-box-shadow); /* Keep shadow consistent on hover */
+}
+
+/* Align table left, center, or right */
+.mcm-table-alignment.mcm-content-alignment-left .table-shade table {
+  margin-left: var(--side-margin);
+}
+
+.mcm-table-alignment.mcm-content-alignment-center .table-shade table {
+  margin-left: var(--side-margin);
+  margin-right: var(--side-margin);
+}
+
+.mcm-table-alignment.mcm-content-alignment-right .table-shade table {
+  margin-right: var(--side-margin);
+  margin-left: auto;
+}

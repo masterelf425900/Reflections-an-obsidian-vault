@@ -1,0 +1,72 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "path:06-People  ",
+      "color": {
+        "a": 1,
+        "rgb": 16423373
+      }
+    },
+    {
+      "query": "path:\"01-Daily Notes\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14889538
+      }
+    },
+    {
+      "query": "path:\"02-Weekly Notes\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 3597180
+      }
+    },
+    {
+      "query": "path:\"03-Monthly Notes\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 3577315
+      }
+    },
+    {
+      "query": "path:\"04-Quarterly Notes\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 9717496
+      }
+    },
+    {
+      "query": "path:\"05-Yearly Notes\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 15308606
+      }
+    },
+    {
+      "query": "path:09-Extras/Old  ",
+      "color": {
+        "a": 1,
+        "rgb": 11580356
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.08478963486446166,
+  "close": true
+}

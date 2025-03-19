@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "type": "group",
+      "ctime": 1735195974751,
+      "items": [
+        {
+          "type": "group",
+          "ctime": 1735196531920,
+          "items": [
+            {
+              "type": "group",
+              "ctime": 1735196531920,
+              "items": [
+                {
+                  "type": "group",
+                  "ctime": 1735196563380,
+                  "items": [],
+                  "title": "2024 Jul"
+                },
+                {
+                  "type": "group",
+                  "ctime": 1735196563380,
+                  "items": [],
+                  "title": "2024 Jul"
+                },
+                {
+                  "type": "group",
+                  "ctime": 1735196559532,
+                  "items": [],
+                  "title": "2024 Aug"
+                },
+                {
+                  "type": "group",
+                  "ctime": 1735196554370,
+                  "items": [],
+                  "title": "2024 Sep"
+                },
+                {
+                  "type": "group",
+                  "ctime": 1735196551112,
+                  "items": [],
+                  "title": "2024 Oct"
+                },
+                {
+                  "type": "group",
+                  "ctime": 1735196547512,
+                  "items": [],
+                  "title": "2024 Nov"
+                },
+                {
+                  "type": "group",
+                  "ctime": 1735196543641,
+                  "items": [],
+                  "title": "2024 Dec"
+                }
+              ],
+              "title": "2024"
+            }
+          ],
+          "title": "01-Daily Notes"
+        }
+      ],
+      "title": "Daily Notes"
+    }
+  ]
+}

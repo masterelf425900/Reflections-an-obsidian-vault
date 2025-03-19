@@ -1,0 +1,24 @@
+/* Custom Inline Code Styles */
+
+:root {
+  --custom-inline-code-color: #25bec9; /* Change this to your desired color */
+  --custom-inline-code-background: #1a1c23; /* Change this to your desired background color */
+}
+
+/* Overwrite styles for inline code in live preview */
+.is-live-preview code {
+  color: var(--custom-inline-code-color) !important;
+  background-color: var(--custom-inline-code-background) !important;
+}
+
+/* Overwrite styles for inline code in markdown preview */
+body .markdown-preview-view *:not(pre) > code {
+  color: var(--custom-inline-code-color) !important;
+  background-color: var(--custom-inline-code-background) !important;
+}
+
+/* Overwrite styles for inline code in editor */
+.cm-inline-code.cm-inline-code.cm-inline-code.cm-inline-code.cm-inline-code.cm-inline-code {
+  color: var(--custom-inline-code-color) !important;
+  background-color: var(--custom-inline-code-background) !important;
+}

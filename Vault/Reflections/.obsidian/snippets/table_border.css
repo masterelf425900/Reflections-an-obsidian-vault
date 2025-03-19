@@ -1,0 +1,12 @@
+/* CSS class to remove table cell borders */
+.table-border table, 
+.table-border th, 
+.table-border td {
+    border: none !important; /* Remove borders from the table, header, and cells */
+    border-collapse: collapse; /* Ensure borders are fully collapsed */
+}
+
+/* Optional: Remove spacing between cells */
+.table-border table {
+    border-spacing: 0; /* Ensure there's no space between cells */
+}

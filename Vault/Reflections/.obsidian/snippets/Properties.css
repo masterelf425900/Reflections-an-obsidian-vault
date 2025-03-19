@@ -1,0 +1,15 @@
+/* 
+Hide Properties in reading mode by default.
+Add "show_properties" to `css_classes` property to show them.
+============================================================= */
+.workspace-leaf-content[data-mode="preview"]
+.markdown-preview-view
+.metadata-container{
+    display: none;
+}
+
+.workspace-leaf-content[data-mode="preview"]
+.markdown-preview-view.show_properties
+.metadata-container{
+    display: block;
+}

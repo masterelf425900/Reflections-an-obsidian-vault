@@ -1,0 +1,98 @@
+/* Custom Table Style for Obsidian */
+/* Define custom properties for spacing */
+:root {
+  --row-gap: 10px;
+  --first-row-gap: -20px;
+  --border-color: rgb(200, 221, 242);
+  --side-margin: 10px;
+  --vertical-margin: 10px;
+  --column-gap: 10px;
+}
+
+/* Scope styles to notes with the table-daily class in YAML frontmatter */
+.markdown-preview-view.table-daily {
+  /* Target both regular tables and dataview tables */
+  table,
+  .dataview.table-view-table {
+    border-collapse: separate;
+    border-spacing: var(--row-gap) var(--column-gap);
+    width: calc(100% - 2 * var(--side-margin));
+    margin: var(--vertical-margin) auto;
+    max-width: calc(100% - 2 * var(--side-margin));
+    box-shadow:
+      0 0.1rem 0.5rem var(--background-modifier-box-shadow), /* Top */
+      0 0.2rem 0.5rem var(--background-modifier-box-shadow), /* Bottom */
+      0.1rem 0 0.5rem var(--background-modifier-box-shadow), /* Right */
+      -0.1rem 0 0.5rem var(--background-modifier-box-shadow); /* Left */
+  }
+
+  /* Remove borders from table cells and header cells */
+  table th,
+  table td,
+  .dataview.table-view-table th,
+  .dataview.table-view-table td {
+    border: none;
+    background-color: var(--background-primary);
+    padding: 0;
+  }
+
+  /* Add a single, continuous line below each row including the header and first row */
+  table tr,
+  .dataview.table-view-table thead tr,
+  .dataview.table-view-table tbody tr {
+    position: relative;
+    margin-bottom: var(--row-gap);
+  }
+
+  table tr::after,
+  .dataview.table-view-table thead tr::after,
+  .dataview.table-view-table tbody tr::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--border-color);
+  }
+
+  /* Specific styling for the header row in dataview tables */
+  .dataview.table-view-table thead tr {
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  /* Ensure no extra lines below the last row */
+  .dataview.table-view-table tbody tr:last-of-type::after {
+    display: none;
+  }
+
+  /* Add a gap between columns to simulate cut-off effect */
+  table td:not(:last-child)::after,
+  .dataview.table-view-table td:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: var(--column-gap);
+    height: 10px;
+    background-color: var(--background-primary);
+  }
+
+  /* Align table to the left, center, or right similar to multi-column layout alignment */
+  .mcm-table-alignment.mcm-content-alignment-left table,
+  .mcm-table-alignment.mcm-content-alignment-left .dataview.table-view-table {
+    margin-right: auto;
+    margin-left: var(--side-margin);
+  }
+
+  .mcm-table-alignment.mcm-content-alignment-center table,
+  .mcm-table-alignment.mcm-content-alignment-center .dataview.table-view-table {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .mcm-table-alignment.mcm-content-alignment-right table,
+  .mcm-table-alignment.mcm-content-alignment-right .dataview.table-view-table {
+    margin-right: var(--side-margin);
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,127 @@
+/* Style the dropdown trigger itself */
+.daily-year select {
+    color: #000000; /* Text color inside dropdown */
+    background-color: #c8ddf2; /* Background color for dropdown field */
+    border: 1px solid #000000; /* Default border */
+    padding-right: 20px; /* Space for potential custom arrow */
+}
+
+/* Style for the options inside the dropdown */
+.daily-year select option {
+    background-color: #c8ddf2; /* Background for each option */
+    color: #000; /* Text color for each option */
+}
+
+/* 1. Change background of hovered option to blue */
+.daily-year select option:hover {
+    background-color: #3a92cf; /* Light blue when hovering an option */
+    color: #000; /* Keep the text color black */
+}
+
+/* 2. Change the cursor hover background to pink */
+.daily-year select:hover {
+    background-color: #3a92cf; /*  background on hover */
+}
+
+/* 3. Change the border color on hover and focus to blue */
+.daily-year select:focus, .daily-year select:hover {
+    border: 1px solid #000000; /* Change border on hover and focus */
+}
+
+/* Optional: Hover styling for the entire dropdown (not just the selected option) */
+.daily-year select:focus-visible {
+    border-color: #3a92cf; /* Blue border on focus (visible state) */
+}
+
+.reflection-text textarea {
+    height: 250px; /* Ensures a minimum height */
+}
+
+
+===============================================================
+
+
+/* Style the dropdown trigger itself */
+.milestones-tag select {
+    color: #DC8556; /* Default text color for the dropdown */
+    font-weight: bold; /* Make text bold */
+    border: 1px solid #000; /* Default border */
+    padding-right: 20px; /* Space for potential custom arrow */
+    transition: color 0.3s, background-color 0.3s; /* Smooth transition */
+}
+
+/* Ensure the text color of the dropdown is consistent */
+.milestones-tag select:focus {
+    color: #DC8556; /* Consistent text color on focus */
+    font-weight: bold; /* Keep text bold on focus */
+    border-color: #3a92cf; /* Optional: Highlight the border on focus */
+}
+
+/* Hover styling for the dropdown trigger */
+.milestones-tag select:hover {
+    color: #DC8556; /* Keep text color consistent */
+    font-weight: bold; /* Keep text bold on hover */
+}
+
+/* Style for all options in the dropdown */
+.milestones-tag select option {
+    color: #DC8556; /* Text color for dropdown options */
+    font-weight: bold; /* Make dropdown option text bold */
+}
+
+/* Hover styling for the dropdown options */
+.milestones-tag select option:hover {
+    color: #ffffff; /* Text color for hovered option */
+    font-weight: bold; /* Keep hovered option text bold */
+}
+
+/* Ensure consistent styling when the dropdown is inactive */
+.milestones-tag select:not(:hover) {
+    color: #DC8556; /* Default text color when not hovered or focused */
+    font-weight: bold; /* Ensure text remains bold */
+}
+
+
+===============================================================================
+
+/* Style the dropdown trigger itself */
+.targets-tag select {
+    color: #5856dc; /* Default text color for the dropdown */
+    font-weight: bold; /* Make text bold */
+    border: 1px solid #000; /* Default border */
+    padding-right: 20px; /* Space for potential custom arrow */
+    transition: color 0.3s, background-color 0.3s; /* Smooth transition */
+}
+
+/* Ensure the text color of the dropdown is consistent */
+.targets-tag select:focus {
+    color: #5856dc; /* Consistent text color on focus */
+    font-weight: bold; /* Keep text bold on focus */
+    border-color: #3a92cf; /* Optional: Highlight the border on focus */
+}
+
+/* Hover styling for the dropdown trigger */
+.targets-tag select:hover {
+    color: #5856dc; /* Keep text color consistent */
+    font-weight: bold; /* Keep text bold on hover */
+}
+
+/* Style for all options in the dropdown */
+.targets-tag select option {
+    color: #5856dc; /* Text color for dropdown options */
+    font-weight: bold; /* Make dropdown option text bold */
+}
+
+/* Hover styling for the dropdown options */
+.targets-tag select option:hover {
+    color: #ffffff; /* Text color for hovered option */
+    font-weight: bold; /* Keep hovered option text bold */
+}
+
+/* Ensure consistent styling when the dropdown is inactive */
+.targets-tag select:not(:hover) {
+    color: #5856dc; /* Default text color when not hovered or focused */
+    font-weight: bold; /* Ensure text remains bold */
+}
+
+

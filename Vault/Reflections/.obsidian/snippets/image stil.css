@@ -1,0 +1,78 @@
+/* Custom Table Style for Obsidian */
+/* Define custom properties for spacing */
+:root {
+  --row-gap: 10px;
+  --border-color: rgb(87, 92, 117);
+  --side-margin: 10px;
+  --vertical-margin: 10px;
+  --column-gap: 10px;
+}
+
+.markdown-preview-view.table-style-dataview table {
+  border-collapse: separate;
+  border-spacing: var(--row-gap) var(--column-gap);
+  width: calc(100% - 2 * var(--side-margin));
+  margin: var(--vertical-margin) auto;
+  max-width: calc(100% - 2 * var(--side-margin));
+  box-shadow: 0 0.2rem 0.5rem var(--background-modifier-box-shadow);
+}
+
+.markdown-preview-view.table-style-dataview table th,
+.markdown-preview-view.table-style-dataview table td {
+  border: none;
+  background-color: var(--background-primary);
+  padding: 0;
+}
+
+.markdown-preview-view.table-style-dataview table th {
+  background-color: var(--background-primary);
+  border-bottom: none;
+}
+
+.markdown-preview-view.table-style-dataview table tr {
+  position: relative;
+  margin-bottom: var(--row-gap);
+}
+
+/* Add dashed line below each row, including the first row */
+.markdown-preview-view.table-style-dataview table tr::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: calc(-1 * var(--row-gap) / 2);
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to right, var(--border-color) 50%, transparent 50%);
+  background-size: 10px 1px;
+  background-repeat: repeat-x;
+}
+
+/* Remove the line after the last row */
+.markdown-preview-view.table-style-dataview table tr:last-of-type::after {
+  display: none;
+}
+
+.markdown-preview-view.table-style-dataview table td:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: var(--column-gap);
+  height: 10px;
+  background-color: var(--background-primary);
+}
+
+/* Table alignment styles remain unchanged */
+.mcm-table-alignment.mcm-content-alignment-left .table-style-dataview table {
+  margin-right: auto;
+  margin-left: var(--side-margin);
+}
+
+.mcm-table-alignment.mcm-content-alignment-center .table-style-dataview table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mcm-table-alignment.mcm-content-alignment-right .table-style-dataview table {
+  margin-right: var(--side-margin);
+  margin-left: auto;
+}

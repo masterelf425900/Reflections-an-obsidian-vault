@@ -1,0 +1,109 @@
+{
+  "dualConfigs": false,
+  "showConsoleLog": false,
+  "desktop": {
+    "shortDelaySeconds": 5,
+    "longDelaySeconds": 15,
+    "delayBetweenPlugins": 40,
+    "defaultStartupType": null,
+    "showDescriptions": true,
+    "plugins": {
+      "table-editor-obsidian": {
+        "startupType": "instant"
+      },
+      "obsidian-banners": {
+        "startupType": "instant"
+      },
+      "calendar": {
+        "startupType": "instant"
+      },
+      "obsidian-charts": {
+        "startupType": "instant"
+      },
+      "colored-text": {
+        "startupType": "disabled"
+      },
+      "obsidian-columns": {
+        "startupType": "disabled"
+      },
+      "custom-sort": {
+        "startupType": "instant"
+      },
+      "customjs": {
+        "startupType": "instant"
+      },
+      "dashboard-navigator": {
+        "startupType": "instant"
+      },
+      "dataview": {
+        "startupType": "instant"
+      },
+      "folder-notes": {
+        "startupType": "instant"
+      },
+      "homepage": {
+        "startupType": "instant"
+      },
+      "iconic": {
+        "startupType": "disabled"
+      },
+      "obsidian-icon-folder": {
+        "startupType": "disabled"
+      },
+      "js-engine": {
+        "startupType": "instant"
+      },
+      "obsidian-kanban": {
+        "startupType": "instant"
+      },
+      "ledger-obsidian": {
+        "startupType": "disabled"
+      },
+      "obsidian-linter": {
+        "startupType": "disabled"
+      },
+      "obsidian-lock-screen-plugin": {
+        "startupType": "instant"
+      },
+      "obsidian-meta-bind-plugin": {
+        "startupType": "instant"
+      },
+      "metaedit": {
+        "startupType": "instant"
+      },
+      "multi-tag": {
+        "startupType": "instant"
+      },
+      "multi-column-markdown": {
+        "startupType": "instant"
+      },
+      "url-into-selection": {
+        "startupType": "disabled"
+      },
+      "periodic-notes": {
+        "startupType": "instant"
+      },
+      "quickadd": {
+        "startupType": "instant"
+      },
+      "sheets": {
+        "startupType": "instant"
+      },
+      "obsidian-style-settings": {
+        "startupType": "instant"
+      },
+      "obsidian-tasks-plugin": {
+        "startupType": "disabled"
+      },
+      "templater-obsidian": {
+        "startupType": "instant"
+      },
+      "advanced-canvas": {
+        "startupType": "instant"
+      },
+      "obsidian-view-mode-by-frontmatter": {
+        "startupType": "instant"
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+/* Style for the dataview table */
+.dataview.table-view-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style for the header row */
+.dataview.table-view-table thead th {
+    color: rgb(74, 144, 226) !important;
+    font-weight: bold;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Style for bullet points (•) */
+.dataview.table-view-table strong:contains("•") {
+    color: rgb(102, 102, 102) !important;
+}
+
+/* Style for viewing status - complete */
+.dataview.table-view-table div:contains("complete") {
+    color: rgb(26, 188, 156) !important;
+}
+
+/* Style for Not Viewed status */
+.dataview.table-view-table div:contains("not viewed") {
+    color: rgb(220, 86, 151) !important;
+}
+
+/* Style for Unknown status and date */
+.dataview.table-view-table div:contains("Unknown") {
+    color: rgb(164, 100, 206) !important;
+}
+
+/* Additional styles for better spacing */
+.dataview.table-view-table td {
+    padding: 8px;
+    vertical-align: top;
+}
+
+/* Make sure links maintain their color */
+.dataview.table-view-table a {
+    color: var(--link-color);
+}
+
+/* Ensure bullet points are colored correctly even within links */
+.dataview.table-view-table a strong:contains("•") {
+    color: rgb(102, 102, 102) !important;
+}
+
+/* Style for genres */
+.dataview.table-view-table td div {
+    line-height: 1.5;
+}

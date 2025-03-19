@@ -1,0 +1,260 @@
+{
+  "main": {
+    "id": "77f5b71cfdf3f3eb",
+    "type": "split",
+    "children": [
+      {
+        "id": "f2e0aa55d52f537b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "008388567767abeb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01-Daily Notes/2025 Mar 19th Wed.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025 Mar 19th Wed"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "64b205209190d8ec",
+    "type": "split",
+    "children": [
+      {
+        "id": "461d797897f229c9",
+        "type": "tabs",
+        "dimension": 74.03474903474904,
+        "children": [
+          {
+            "id": "64e748d77bf2f57d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "4f8276cb1f2c955a",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          },
+          {
+            "id": "0d086500e6f729f5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "6217377b4d6de51c",
+        "type": "tabs",
+        "dimension": 25.965250965250963,
+        "children": [
+          {
+            "id": "a85663d28c67b6dc",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 294.5
+  },
+  "right": {
+    "id": "4989259ce2af3e6d",
+    "type": "split",
+    "children": [
+      {
+        "id": "00a8da13b0d95053",
+        "type": "tabs",
+        "dimension": 28.293135435992575,
+        "children": [
+          {
+            "id": "003911a5b8182147",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "01-Daily Notes/2024 Oct/2024 Oct 17th Thu.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 2024 Oct 17th Thu"
+            }
+          },
+          {
+            "id": "d49b5d72558ed1f1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "08-Finances/Finances.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Finances"
+            }
+          },
+          {
+            "id": "1d07d1641d3094f4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequencyReverse",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "6a074e3f9faab955",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "HOW TO USE!!!/2025 Mar 19th Wed.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 2025 Mar 19th Wed"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "d31f75f3257235fe",
+        "type": "tabs",
+        "dimension": 71.70686456400742,
+        "children": [
+          {
+            "id": "c646130dec440fbd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 258.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Open graph view": false,
+      "switcher:Open quick switcher": true,
+      "canvas:Create new canvas": false,
+      "command-palette:Open command palette": false,
+      "templater-obsidian:Templater": false,
+      "quickadd:QuickAdd": false,
+      "periodic-notes:Open today": false
+    }
+  },
+  "active": "008388567767abeb",
+  "lastOpenFiles": [
+    "01-Daily Notes/2025 Feb 16th Sun.md",
+    "04-Entertainment/Tv-Shows/Tv-Shows.md",
+    "04-Entertainment/Tv-Shows/2D Animation/Attack on Titan.md",
+    "04-Entertainment/Movies/Movies.md",
+    "04-Entertainment/Games/Games.md",
+    "04-Entertainment/Games/Strategy/Shadow Tactics Blades of the Shogun.md",
+    "04-Entertainment/Games/Mobile/Clash of Clans.md",
+    "04-Entertainment/Games/Strategy/Rise of Nations Rise of Legends.md",
+    "04-Entertainment/Games/Retro/Sunset Riders.md",
+    "04-Entertainment/Games/Retro/Road Rash.md",
+    "04-Entertainment/Games/AAA/Sekiro Shadows Die Twice.md",
+    "Untitled.md",
+    "01-Daily Notes/2025 Mar 19th Wed.md",
+    "03-Monthly Notes/2025 Feb.md",
+    "08-folder",
+    "07-folder",
+    "09-Extras/Templates/Daily Note.md",
+    "01-Daily Notes/2025 Feb 19th Wed.md",
+    "01-Daily Notes/2025 Feb 18th Tue.md",
+    "01-Daily Notes/2025 Feb 17th Mon.md",
+    "06-Finances/DEMO.md",
+    "06-Finances/DEMO.md",
+    "08-Finances/Finances.md",
+    "08-Finances/College Transactions.md",
+    "06-Finances/Finances.ledger",
+    "06-Finances/Finances - Copy.ledger",
+    "06-Finances/Finances (9).ledger",
+    "06-Finances/Finances (8).ledger",
+    "06-Finances/Finances (7).ledger",
+    "06-Finances/Finances (6).ledger",
+    "06-Finances/Finances (5).ledger",
+    "06-Finances/Finances (4).ledger",
+    "06-Finances/Finances.md",
+    "06-Finances/College Transactions.md",
+    "02-Weekly Notes/2025 Feb 22nd (W08).md",
+    "09-Extras/Templates/Monthly Note.md",
+    "09-Extras/Referenced Images/TV Shows/Live Action/Chernobyl.jpg",
+    "09-Extras/Referenced Images/TV Shows/Live Action/Game of Thrones.jpg",
+    "09-Extras/Referenced Images/TV Shows/2D Animation/danny phantom.jpg",
+    "09-Extras/Referenced Images/TV Shows/2D Animation/Ben 10.jpg",
+    "09-Extras/Referenced Images/TV Shows/2D Animation/Attack on Titan.jpg",
+    "09-Extras/Referenced Images/Icons/mood-plus.svg",
+    "09-Extras/Referenced Images/Icons/Shower-03.svg",
+    "09-Extras/Referenced Images/Icons/haze-moon.svg",
+    "09-Extras/Referenced Images/Icons/Moonset-2.svg",
+    "09-Extras/Referenced Images/Icons/Moon-Stars.svg",
+    "06-People/04-Casual Acquaintances/Miraj/Sifat.canvas"
+  ]
+}

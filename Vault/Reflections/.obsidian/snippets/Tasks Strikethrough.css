@@ -1,0 +1,60 @@
+/* Remove strikethrough from completed tasks */
+.markdown-preview-view .task-list-item.is-checked {
+    text-decoration: none !important; /* Remove strikethrough */
+}
+
+/* Change the appearance of checkboxes for completed tasks */
+.markdown-preview-view .task-list-item.is-checked .task-list-item-checkbox {
+    background-color: #ffbb00; /* Custom color for completed checkbox */
+    border-color: #ffbb00; /* Border color for checkbox */
+}
+
+/* Task list text color and font styling for completed tasks */
+.markdown-preview-view .task-list-item.is-checked .task-list-item-label {
+    color: #ff0066; /* Change text color */
+    font-weight: bold; /* Bold text */
+    font-style: italic; /* Italicize text */
+}
+
+/* Unchecked tasks styling */
+.markdown-preview-view .task-list-item:not(.is-checked) .task-list-item-label {
+    color: #ff0066; /* Change text color for incomplete tasks */
+    font-weight: normal; /* Regular text */
+    font-style: italic; /* Italicize text */
+}
+
+/* Ensure the bullet or checkbox aligns properly */
+.markdown-preview-view .task-list-item-checkbox {
+    border-radius: 50%; /* Rounded checkboxes for tasks */
+    width: 18px; /* Customize size */
+    height: 18px; /* Customize size */
+}
+
+/* Style adjustments for tasks in edit mode */
+.markdown-source-view.mod-cm6 .task-list-item.is-checked {
+    text-decoration: none !important; /* Remove strikethrough */
+}
+
+.markdown-source-view.mod-cm6 .task-list-item.is-checked .task-list-item-checkbox {
+    background-color: #ffbb00; /* Custom color for completed checkbox */
+    border-color: #ffbb00; /* Border color for checkbox */
+}
+
+.markdown-source-view.mod-cm6 .task-list-item.is-checked .task-list-item-label {
+    color: #ff0066; /* Change text color */
+    font-weight: bold; /* Bold text */
+    font-style: italic; /* Italicize text */
+}
+
+.markdown-source-view.mod-cm6 .task-list-item:not(.is-checked) .task-list-item-label {
+    color: #ff0066; /* Change text color for incomplete tasks */
+    font-weight: normal; /* Regular text */
+    font-style: italic; /* Italicize text */
+}
+
+/* Adjust checkbox styles for source view */
+.markdown-source-view.mod-cm6 .task-list-item-checkbox {
+    border-radius: 50%; /* Rounded checkboxes for tasks */
+    width: 18px; /* Customize size */
+    height: 18px; /* Customize size */
+}

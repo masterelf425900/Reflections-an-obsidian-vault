@@ -1,0 +1,200 @@
+.metabind-target button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #5856dc;
+  background-color: #1a1c23;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.metabind-target button:hover {
+  background-color: #23252f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.metabind-milestone button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #dc8556;
+  background-color: #1a1c23;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.metabind-milestone button:hover {
+  background-color: #23252f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.metabind-reminder button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #4a90e2;
+  background-color: #1a1c23;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.metabind-reminder button:hover {
+  background-color: #23252f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.input-w-full > * {
+  width: 25%;
+}
+
+
+.input-w-time > * {
+  width: 7%;
+}
+
+.reminder-date > * {
+  color: #4a90e2;
+}
+
+
+
+.metabind-home button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #c8ddf2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.metabind-home button:hover {
+  background-color: #3a92cf;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.metabind-daily button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #c8ddf2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.metabind-daily button:hover {
+  background-color: #3a92cf;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.metabind-refresh button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #c8ddf2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.metabind-refresh button:hover {
+  background-color: #3a92cf;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+=====================
+
+.movies-refresh button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #272727;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.movies-refresh button:hover {
+  background-color: #272727;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.mb-input-type-time input[type="time"] {
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    position: relative;
+    padding-right: 35px; /* Slightly reduced to bring HR closer */
+}
+
+/* Hide the AM/PM indicator */
+.mb-input-type-time.sleep-time-input input[type="time"]::-webkit-datetime-edit-ampm-field {
+    opacity: 0;
+    width: 0;
+    position: absolute;
+}
+
+/* Add "HR" after the time input */
+.mb-input-type-time.sleep-time-input {
+    position: relative;
+    display: inline-block;
+}
+
+.mb-input-type-time.sleep-time-input::after {
+    content: "HR";
+    position: absolute;
+    right: 38px; /* Moved left from 10px to 6px */
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: ;
+    color: var(--text-normal);
+    pointer-events: none;
+}
+
+/* Ensure the time input doesn't overflow its container */
+.mb-input-type-time.sleep-time-input input[type="time"] {
+    width: calc(100% - 4px); /* Subtracting 4px to account for borders */
+    box-sizing: border-box;
+}
+
+
+
+

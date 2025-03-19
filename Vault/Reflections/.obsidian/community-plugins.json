@@ -1,0 +1,17 @@
+[
+  "sample-plugin",
+  "lazy-plugins",
+  "calendar",
+  "obsidian-charts",
+  "dataview",
+  "templater-obsidian",
+  "periodic-notes",
+  "obsidian-meta-bind-plugin",
+  "customjs",
+  "js-engine",
+  "folder-notes",
+  "metaedit",
+  "quickadd",
+  "multi-tag",
+  "obsidian-view-mode-by-frontmatter"
+]

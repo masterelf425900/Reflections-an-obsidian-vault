@@ -1,0 +1,28 @@
+/* Default styles for checkboxes */
+input[type="checkbox"] {
+    appearance: none !important; /* Remove default styling */
+    width: 20px !important; /* Width of the checkbox */
+    height: 20px !important; /* Height of the checkbox */
+    border: 2px solid rgb(65, 64, 156) !important; /* Default border color */
+    border-radius: 20px !important; /* Optional: rounded corners */
+    cursor: pointer !important; /* Change cursor on hover */
+    transition: border-color 0.3s ease !important, background-color 0.3s ease !important; /* Smooth transition */
+}
+
+/* Change border color on hover when unchecked */
+input[type="checkbox"]:hover {
+    border-color: rgb(220, 133, 86) !important; /* Border color on hover */
+}
+
+/* Styles for checked state */
+input[type="checkbox"]:checked {
+    background-color: rgb(220, 133, 86) !important; /* Background color for checked state */
+    border-color: rgb(220, 133, 86) !important; /* Border color for checked state */
+}
+
+/* Change styles on hover when checked */
+input[type="checkbox"]:checked:hover {
+    background-color: transparent !important; /* Transparent background on hover when checked */
+    border-color: rgb(65, 64, 156) !important; /* Change border color on hover when checked */
+}
+

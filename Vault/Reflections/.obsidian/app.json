@@ -1,0 +1,9 @@
+{
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "readableLineLength": false,
+  "defaultViewMode": "source",
+  "propertiesInDocument": "visible",
+  "focusNewTab": true,
+  "autoConvertHtml": false
+}

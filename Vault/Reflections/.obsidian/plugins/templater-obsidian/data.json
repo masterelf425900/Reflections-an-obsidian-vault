@@ -1,0 +1,50 @@
+{
+  "command_timeout": 5,
+  "templates_folder": "09-Extras/Templates",
+  "templates_pairs": [
+    [
+      "",
+      ""
+    ]
+  ],
+  "trigger_on_file_creation": true,
+  "auto_jump_to_cursor": false,
+  "enable_system_commands": false,
+  "shell_path": "",
+  "user_scripts_folder": "",
+  "enable_folder_templates": true,
+  "folder_templates": [
+    {
+      "folder": "06-Entertainment/Movies",
+      "template": "09-Extras/Templates/Movies.md"
+    },
+    {
+      "folder": "01-Daily Notes",
+      "template": "09-Extras/Templates/Daily Note.md"
+    },
+    {
+      "folder": "02-Weekly Notes",
+      "template": "09-Extras/Templates/Weekly Note.md"
+    },
+    {
+      "folder": "03-Monthly Notes",
+      "template": "09-Extras/Templates/Monthly Note.md"
+    }
+  ],
+  "enable_file_templates": false,
+  "file_templates": [
+    {
+      "regex": ".*",
+      "template": ""
+    }
+  ],
+  "syntax_highlighting": true,
+  "syntax_highlighting_mobile": false,
+  "enabled_templates_hotkeys": [
+    ""
+  ],
+  "startup_templates": [
+    ""
+  ],
+  "enable_ribbon_icon": true
+}

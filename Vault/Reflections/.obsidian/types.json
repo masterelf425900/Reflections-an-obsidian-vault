@@ -1,0 +1,11 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "Sleep_Total": "text",
+    "Sleep_End": "checkbox",
+    "Sleep_Time": "checkbox",
+    "Sort": "multitext"
+  }
+}

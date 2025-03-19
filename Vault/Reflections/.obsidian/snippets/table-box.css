@@ -1,0 +1,47 @@
+================================================================
+
+
+/* Custom Table Style for Obsidian */
+/* Define custom properties for spacing */
+:root {
+  --row-gap: 10px;
+  --first-row-gap: -20px;
+  --border-color: rgb(200, 221, 242);
+  --side-margin: 10px;
+  --vertical-margin: 10px;
+  --column-gap: 10px;
+}
+
+/* Scope styles to notes with the table-box class in YAML frontmatter */
+.markdown-preview-view.table-box {
+  /* Target both regular tables and dataview tables */
+  table,
+  .dataview.table-view-table {
+    border-collapse: separate;
+    border-spacing: 0px;
+    width: calc(100% - 2 * var(--side-margin));
+    margin: var(--vertical-margin) auto;
+    max-width: calc(100% - 2 * var(--side-margin));
+    box-shadow: 0 0.2rem 0.5rem var(--background-modifier-box-shadow);
+  }
+
+  /* Remove borders from table cells and header cells */
+  table th,
+  table td,
+  .dataview.table-view-table th,
+  .dataview.table-view-table td {
+    border: none;
+    background-color: var(--background-primary);
+    padding: 0;
+  }
+
+  /* Add a single, continuous line below each row including the header and first row */
+  table tr,
+  .dataview.table-view-table thead tr,
+  .dataview.table-view-table tbody tr {
+    position: relative;
+    margin-bottom: var(--row-gap);
+  }
+}
+
+
