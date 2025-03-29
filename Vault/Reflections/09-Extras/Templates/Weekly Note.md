@@ -2,23 +2,23 @@
 Date: <% tp.date.now("YYYY-MM-DD", undefined, tp.file.title, "YYYY MMM Do ([W]ww)") %>
 creation date: <% tp.file.creation_date("YYYY MMM Do ddd LT", 0) %>
 modification date: <% tp.file.last_modified_date("YYYY MMM Do ddd LT", 0) %>
+cssclasses:
+  - table-box
+  - task-color
 obsidianUIMode: 
-cssclasses: 
 Reflections: ""
 Patterns_and_Trends: 
 Future_Considerations: 
-Laundry_status: false
-Cleaning_status: false
-Car_status: false
-Gardening_status: false
-Finance_status: false
+Prune_status: 
+Sanctify_status: 
+Rinse_status:
 ---
 
-<< [[<% tp.date.weekday("YYYY MMM Do ddd", -5, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Sun]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -4, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Mon]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -3, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Tue]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -2, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Wed]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -1, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Thu]] | [[<% tp.date.weekday("YYYY MMM Do ddd", 0, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Fri]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -6, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Sat]] >> | << [[<% tp.date.weekday("YYYY MMM Do ([W]ww)", -7, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Last Weekday]] | [[<% tp.date.weekday("YYYY MMM Do ([W]ww)", 7, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Next Weekday]] | [[<% tp.date.now("YYYY MMM", undefined, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Monthly]]  >>  `BUTTON[Refresh]`
+<< [[<% tp.date.weekday("YYYY MMM Do ddd", -6, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Sun]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -5, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Mon]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -4, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Tue]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -3, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Wed]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -2, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Thu]] | [[<% tp.date.weekday("YYYY MMM Do ddd", -1, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Fri]] | [[<% tp.date.weekday("YYYY MMM Do ddd", 0, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Sat]] >> | << [[<% tp.date.weekday("YYYY MMM Do ([W]ww)", -7, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Last Weekday]] | [[<% tp.date.weekday("YYYY MMM Do ([W]ww)", 7, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Next Weekday]] | [[<% tp.date.now("YYYY MMM", undefined, tp.file.title, "YYYY MMM Do ([W]ww)") %>|Monthly]]  >>  `BUTTON[Refresh]`
+
 ```meta-bind-embed
 [[Movies Embeds]]
 ```
-
 ---
 
 ## <span style="color:rgb(74, 144, 226)">Reflections</span> ![[feather.svg|30]]
@@ -37,28 +37,32 @@ const parseDate = (dateString) => {
 const currentDate = parseDate(dv.current().file.frontmatter.Date);
 
 // Calculate the start date (7 days before the current note's date)
-const startDate = currentDate.minus({days: 7});
+const startDate = currentDate.minus({ days: 7 });
 
 // Get all notes within the 7-day range
 const recentNotes = dv.pages()
     .where(p => p.file.frontmatter.Date && 
                parseDate(p.file.frontmatter.Date) >= startDate && 
-               parseDate(p.file.frontmatter.Date) <= currentDate);
+               parseDate(p.file.frontmatter.Date) <= currentDate)
+    .sort(p => parseDate(p.file.frontmatter.Date), 'asc'); // Sorting from earliest to latest
 
-// Extract and flatten Key_Takeouts
+// Extract and flatten Key_Takeouts with note references
 const keyTakeouts = recentNotes
-    .flatMap(page => page.file.frontmatter.Key_Takeouts || [])
-    .filter(takeout => takeout);
+    .flatMap(page => 
+        (page.file.frontmatter.Key_Takeouts || []).map(takeout => ({
+            text: takeout.replace(/^[-•]\s*/, ''),  // Remove any leading bullet symbols
+            noteTitle: page.file.name // Store the note title for linking
+        }))
+    )
+    .filter(takeout => takeout.text.trim() !== '');
 
-// Create the cell content
-const cellContent = keyTakeouts.length > 0 
-    ? `<ul style="list-style-type: none; padding-left: 0; margin: 0; color: inherit;">
-        ${keyTakeouts.map(takeout => `<li style="margin-bottom: 15px; color: inherit;">${takeout.replace(/^[-•]\s*/, '')}</li>`).join("")}
-      </ul>`
-    : "No key takeouts found in the last 7 days.";
+// Render the results properly in Obsidian
+if (keyTakeouts.length > 0) {
+    dv.list(keyTakeouts.map(({ text, noteTitle }) => `${text} [[${noteTitle}|🔗]]`));
+} else {
+    dv.paragraph("No key takeouts found in the last 7 days.");
+}
 
-// Render the table
-dv.table([], [[cellContent]]);
 ```
 
 <span style="color:rgb(74, 144, 226); font-weight: bold;">Upcoming Events</span> ![[Calendar-time.svg|24]]
@@ -80,7 +84,8 @@ function extractReminders(page) {
         reminders.push({
           reminder_text: page.file.frontmatter[reminderTextKey],
           reminder_date: moment(page.file.frontmatter[reminderDateKey]),
-          note_date: moment(page.file.frontmatter.Date)
+          note_date: moment(page.file.frontmatter.Date),
+          note_title: page.file.name // Store the note title for linking
         });
         found = true;
         i = j;  // Update i to the found index
@@ -98,8 +103,6 @@ function extractReminders(page) {
   return reminders;
 }
 
-
-
 // Get all notes
 let allNotes = dv.pages();
 
@@ -113,7 +116,6 @@ const sevenDaysAgo = moment(currentNoteDate).subtract(7, 'days').startOf('day');
 let allReminders = allNotes.flatMap(page => {
   if (page.file.path.startsWith("01-Daily Notes/")) {
     const extractedReminders = extractReminders(page);
-    console.log(`Extracted from ${page.file.name}:`, extractedReminders);
     return extractedReminders;
   }
   return [];
@@ -142,29 +144,32 @@ let processedReminders = allReminders.map(reminder => {
   return { ...reminder, symbol, display };
 }).filter(reminder => reminder.display);
 
-// Sort reminders by date
+// Sort reminders by date (earliest to latest)
 processedReminders.sort((a, b) => a.reminder_date.diff(b.reminder_date));
 
 // Check if there are any eligible reminders
 if (processedReminders.length === 0) {
   dv.paragraph("No eligible reminders found.");
 } else {
-  console.log(`Displaying reminders: ${JSON.stringify(processedReminders)}`);
   // Loop through the reminders and create styled output
   for (let reminder of processedReminders) {
     let reminderDate = reminder.reminder_date.format('YYYY-MM-DD');
-    dv.paragraph(`<span style="color:rgb(91, 97, 117); font-weight: bold; margin-left: 13px;">•</span> <span style="display: inline-flex; align-items: center;">
-      <input type="text" value="${reminder.reminder_text}" style="background: transparent; border: 1px solid #282e42; border-radius: 4px; color: inherit; font-weight: 15px; margin-left: 0px; width: 207px;">
-      <span style="margin-left: 15px;"></span>
-      <input type="date" value="${reminderDate}" style="background: #272935; border: 1px solid #282e42; color: #4a90e2; font-size: 13; border-radius: 4px; align-items: center; font-weight: 10px; width: 117px; margin-left: 10px;">
-      <span style="margin-left: 10px;">${reminder.symbol}</span>
-    </span>`);
+    dv.paragraph(`<span style="display: none;">•</span> 
+      <span style="display: inline-flex; align-items: center; gap: 10px;">
+        <input type="text" value="${reminder.reminder_text}" 
+          style="background: transparent; border: 1px solid #282e42; border-radius: 4px; color: inherit; font-size: 15px; width: 200px;">
+        <input type="date" value="${reminderDate}" 
+          style="background: #272935; border: 1px solid #282e42; color: #4a90e2; font-size: 13px; border-radius: 4px; width: 110px;">
+        <span>${reminder.symbol}</span>
+        <span style="white-space: nowrap;">[[${reminder.note_title}|🔗]]</span>
+      </span>`);
   }
 }
 
 ```
 
-## <span style="color:rgb(220, 86, 151)">Entertainment</span> ![[Mask.svg|30]]‎
+## <span style="color:rgb(220, 86, 151)">Entertainment</span> ![[Mask.svg|30]]
+‎ 
 #### <span style="color:rgb(220, 86, 151)">Media</span> ![[tv.svg|24]]
 
 ```dataviewjs
@@ -277,9 +282,12 @@ const topicDataCounts = {
 
 // Define custom colors for specific entries
 const customColors = {
-    "Dota 2": "rgba(255, 0, 0, 0.6)", // Bright red for Dota 2
-    // Add more custom colors here as needed
-    // "Entry Name": "rgba(r, g, b, alpha)",
+    "Dota 2": "#a92e16",
+    "Sid Meier's Civilization VI": "#c49b61",
+    "NieR: Automata": "#c3d0b9",
+    "Deadlock": "#dcd5b7",
+    "Darkest Dungeon": "#943131",
+    "Stardew Valley": "#439a18"
 };
 
 // Helper function to clean and truncate data, and make it case-insensitive
@@ -438,7 +446,7 @@ const parseDate = (dateString) => {
 const currentDate = parseDate(dv.current().file.frontmatter.Date);
 
 // Calculate the start date (7 days before the current note's date)
-const startDate = currentDate.minus({days: 7});
+const startDate = currentDate.minus({ days: 7 });
 
 // Get all notes within the 7-day range
 const recentNotes = dv.pages('"01-Daily Notes"')
@@ -451,27 +459,41 @@ const contentHighlights = recentNotes
     .flatMap(page => page.file.frontmatter.Content_Highlight || [])
     .filter(highlight => highlight);
 
-// Function to convert text with URLs to clickable HTML links
+// Function to convert text with URLs to clickable markdown links
 function convertToLink(text) {
     const urlRegex = /(\[([^\]]+)\]\((https?:\/\/[^\s]+)\))/g;
     return text.replace(urlRegex, (match, p1, p2, p3) => {
-        return `<a href="${p3}" target="_blank" style="color: ; text-decoration: underline;">${p2}</a>`;
+        // Returns markdown link
+        return `[${p2}](${p3})`;
     });
 }
 
-// Create the cell content
-const cellContent = contentHighlights.length > 0 
-    ? `<ul style="list-style-type: none; padding-left: 0; margin: 0; color: inherit;">
-        ${contentHighlights.map(highlight => `<li style="margin-bottom: 15px; color: inherit;">${convertToLink(highlight.replace(/^[-•]\s*/, ''))}</li>`).join("")}
-      </ul>`
-    : "No content highlights found in the last 7 days.";
+// Build an array of markdown strings for each content highlight
+const listItems = contentHighlights.map(highlight => {
+    const formattedHighlight = convertToLink(highlight.replace(/^[-•]\s*/, ''));
+    const noteTitle = recentNotes.find(page => 
+        page.file.frontmatter.Content_Highlight && 
+        page.file.frontmatter.Content_Highlight.includes(highlight)
+    )?.file.name;
+    
+    // Use native markdown wikilink syntax so ctrl+click works
+    const link = noteTitle ? `[[${noteTitle}|🔗]]` : '';
+    return `${formattedHighlight} ${link}`.trim();
+});
 
-// Render the table
-dv.table([], [[cellContent]]);
+// Render the list using dv.list, ensuring Obsidian processes wikilinks
+if (listItems.length > 0) {
+    dv.list(listItems);
+} else {
+    dv.paragraph("No content highlights found in the last 7 days.");
+}
+
 ```
 
-## <span style="color:rgb(26, 188, 156)">Lifestyles</span> ![[Growing.svg|30]]‎
+## <span style="color:rgb(26, 188, 156)">Lifestyles</span> ![[Growing.svg|30]]
+‎ 
 ### <span style="color:rgb(26, 188, 156)">Habits</span> ![[sun.svg|26]]
+
 ###### <span style="color:rgb(26, 188, 156)">Weekly Habit</span> ![[haze-moon.svg|34]]
 
 ```dataviewjs
@@ -662,8 +684,12 @@ tableContainer.appendChild(table);
 dv.paragraph(tableContainer);
 
 ```
+‎ 
+
 ### <span style="color:rgb(26, 188, 156)">Health</span> ![[life.svg|28]]
-#### <span style="color:rgb(26, 188, 156)">Sleep Schedule</span> ![[Moon-Stars.svg|24]]‎
+
+#### <span style="color:rgb(26, 188, 156)">Sleep Schedule</span> ![[Moon-Stars.svg|24]]
+‎ 
 ```dataviewjs
 // Access the current note's YAML frontmatter date
 const yamlDate = dv.current().date;
@@ -806,15 +832,24 @@ if (sleepHoursData.every(d => d === null)) {
 }
 
 ```
+‎ 
 #### <span style="color:rgb(26, 188, 156)">Moods</span> ![[mood-plus.svg|38]]
+‎ 
 ```dataviewjs
 // Access the current note's YAML frontmatter date
 const yamlDate = dv.current().date;
 const currentDate = yamlDate ? dv.date(yamlDate) : dv.date();
 
-// Calculate the date range: past 7 days (including current date)
-const startDate = currentDate.minus({ days: 6 });
-const endDate = currentDate;
+// Function to calculate the date range for the last 7 days (including today)
+function calculateSevenDayRange(date) {
+    // Start from 6 days ago
+    const startDate = date.minus({ days: 6 });
+    // End with the current date
+    const endDate = date;
+    return { startDate, endDate };
+}
+
+const { startDate, endDate } = calculateSevenDayRange(currentDate);
 
 // Define the folder path
 const folderPath = '"01-Daily Notes"';
@@ -853,7 +888,7 @@ const moodColors = {
     "Apathetic": "rgb(169, 169, 169)",    // Dark Gray
     "Melancholic": "rgb(119, 136, 153)",  // Light Slate Gray
     "Despair": "rgb(47, 79, 79)",         // Dark Slate Gray
-    "Nihilistic": "rgb(121, 53, 176)",    // Dim Gray
+    "Nihilistic": "rgb(121, 53, 176)",   // Dim Gray
     "Jaded": "rgb(112, 128, 144)",        // Slate Gray
     "Resigned": "rgb(200, 200, 200)"      // Silver
 };
@@ -876,6 +911,11 @@ pages.forEach(page => {
 
 // Filter out moods with zero occurrences
 const filteredMoods = moods.filter(m => moodCounts[m] > 0);
+
+// Format date for display (e.g., "Mar 24 - Mar 30")
+const startDateFormatted = startDate.toFormat("MMM dd");
+const endDateFormatted = endDate.toFormat("MMM dd");
+const dateRangeText = `${startDateFormatted} - ${endDateFormatted}`;
 
 // Chart data configuration
 const chartData = {
@@ -923,7 +963,7 @@ const chartData = {
         plugins: {
             title: {
                 display: true,
-                text: `Mood Frequency`
+                text: `Mood Frequency (${dateRangeText})`
             },
             legend: {
                 display: false
@@ -970,22 +1010,30 @@ try {
 } catch (error) {
     dv.paragraph(`Error rendering mood chart: ${error.message}`);
 }
-
 ```
-#### <span style="color:rgb(26, 188, 156)">Shower Frequency</span> ![[Shower-03.svg|34]]‎
+‎ 
+#### <span style="color:rgb(26, 188, 156)">Shower Frequency</span> ![[Shower-03.svg|34]]
+‎ 
 ```dataviewjs
 // Access the current note's YAML frontmatter date
 const yamlDate = dv.current().date;
 const currentDate = yamlDate ? dv.date(yamlDate) : dv.date();
 
-// Calculate the date range: past 7 days (including current date)
-const startDate = currentDate.minus({ days: 6 });
-const endDate = currentDate;
+// Function to calculate the date range for the last 7 days (including today)
+function calculateSevenDayRange(date) {
+    // Start from 6 days ago
+    const startDate = date.minus({ days: 6 });
+    // End with the current date
+    const endDate = date;
+    return { startDate, endDate };
+}
+
+const { startDate, endDate } = calculateSevenDayRange(currentDate);
 
 // Define the folder path
 const folderPath = '"01-Daily Notes"';
 
-// Retrieve pages from the specified date range
+// Retrieve pages from the specified date range (last 7 days including today)
 const pages = dv.pages(folderPath)
     .where(page => page.date && page.date >= startDate && page.date <= endDate)
     .sort(page => page.date, 'asc');
@@ -1025,6 +1073,11 @@ pages.forEach(page => {
 
 // Filter out shower times with zero occurrences
 const filteredShowerTimes = showerTimes.filter(t => showerCounts[t] > 0);
+
+// Format date for display (e.g., "Mar 24 - Mar 30")
+const startDateFormatted = startDate.toFormat("MMM dd");
+const endDateFormatted = endDate.toFormat("MMM dd");
+const dateRangeText = `${startDateFormatted} - ${endDateFormatted}`;
 
 // Chart data configuration
 const chartData = {
@@ -1072,7 +1125,7 @@ const chartData = {
         plugins: {
             title: {
                 display: true,
-                text: `Shower Time Frequency`
+                text: `Shower Time Frequency (${dateRangeText})`
             },
             legend: {
                 display: false
@@ -1119,33 +1172,28 @@ try {
 } catch (error) {
     dv.paragraph(`Error rendering shower time chart: ${error.message}`);
 }
-
 ```
+‎ 
 ## <span style="color:rgb(223, 196, 150)">Interactions</span> ![[Handshake.svg|35]]
 
 ```dataviewjs
 // Access the current note's YAML frontmatter date
 const yamlDate = dv.current().date;
-
 // Check if the YAML date is valid, otherwise use today's date
 const currentDate = yamlDate ? dv.date(yamlDate) : dv.date(new Date());
 const sevenDaysAgo = currentDate.minus({ days: 7 });
-
 // Define the folder path
 const folderPath = '"01-Daily Notes"';
-
 // Retrieve pages from the last 7 days
 const pages = dv.pages(folderPath)
     .where(page => page.file.day && dv.date(page.file.day) >= sevenDaysAgo && dv.date(page.file.day) <= currentDate)
     .sort(page => page.file.day, 'desc');
-
 // List of categories to check
 const categories = [
     'Family', 'Relatives', 'Friends', 'Casual Acquaintances', 
     'Academic Contacts', 'Professional Contacts', 'Service Providers', 
-    'Strangers'
+    'Strangers', '‎ ‎ ‎ '
 ];
-
 // Function to extract category data from note content
 function extractCategoryData(content, category) {
     if (typeof content !== 'string') {
@@ -1161,7 +1209,6 @@ function extractCategoryData(content, category) {
     }
     return [];
 }
-
 // Load content asynchronously
 async function processPageContent(page) {
     try {
@@ -1171,7 +1218,6 @@ async function processPageContent(page) {
         return '';
     }
 }
-
 // Iterate through each category and display its entries
 categories.forEach(async (category) => {
     const entryDetails = [];
@@ -1182,9 +1228,10 @@ categories.forEach(async (category) => {
         if (pageContent) {
             const entries = extractCategoryData(pageContent, category);
             entries.forEach(entry => {
-                const mainEntry = entry.trim();
-                if (mainEntry !== '') {
-                    entryDetails.push(mainEntry);
+                // Normalize any newlines in the entry so it stays on one line
+                const singleLineEntry = entry.replace(/\r?\n/g, ' ').trim();
+                if (singleLineEntry !== '') {
+                    entryDetails.push({ detail: singleLineEntry, note: page.file.name });
                 }
             });
         }
@@ -1197,57 +1244,77 @@ categories.forEach(async (category) => {
     // Only display categories with non-empty entries
     if (entryDetails.length > 0) {
         dv.paragraph(`<span style="color:rgb(223, 196, 150); font-weight: bold;">${category}::</span>`);
-        entryDetails.forEach(detail => {
-            if (detail.trim() !== '') {
-                dv.paragraph(`- ${detail.replace(/\[\[([^\]]+)\]\]/g, '[[$1]]').replace(/^([^:]+):/, '**$1**:')}`);
+        entryDetails.forEach(entryObj => {
+            if (entryObj.detail.trim() !== '') {
+                // Format the entry and add the clickable wikilink.
+                const formattedEntry = entryObj.detail
+                    .replace(/\[\[([^\]]+)\]\]/g, '[[$1]]')
+                    .replace(/^([^:]+):/, '**$1**:');
+                dv.paragraph(`- ${formattedEntry} [[${entryObj.note}|🔗]]`);
             }
         });
     }
 });
-
 ```
 
 
 ## <span style="color:rgb(171, 191, 226)">Insights</span> ![[lightbulb.svg|30]]
 
 ```dataviewjs
-// Function to parse YAML date string
-const parseDate = (dateString) => {
+// 1) Parse date from YYYY-MM-DD frontmatter
+function parseDate(dateString) {
     const [year, month, day] = dateString.split('-').map(Number);
     return dv.date(`${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`);
-};
+}
 
-// Get the current note's date from YAML frontmatter
+// 2) Get the current note's date from YAML frontmatter
 const currentDate = parseDate(dv.current().file.frontmatter.Date);
 
-// Calculate the start date (7 days before the current note's date)
+// 3) Calculate the start and end of the current month
 const startDate = currentDate.minus({days: 7});
+const endDate = currentDate.minus({days: 0});
 
-// Get all notes within the 7-day range
-const recentNotes = dv.pages()
-    .where(p => p.file.frontmatter.Date && 
-               parseDate(p.file.frontmatter.Date) >= startDate && 
-               parseDate(p.file.frontmatter.Date) <= currentDate);
+// 4) Find all notes whose date is within this month, sorted ascending by date
+const monthlyNotes = dv.pages()
+    .where(p => p.file.frontmatter.Date 
+             && parseDate(p.file.frontmatter.Date) >= startDate 
+             && parseDate(p.file.frontmatter.Date) <= endDate)
+    .sort(p => parseDate(p.file.frontmatter.Date), 'asc');
 
-// Extract Principles content from each note
-const principlesContent = recentNotes
+// 5) Filter for notes that actually have 'Principles' defined, then store date/title/principles
+const notesWithPrinciples = monthlyNotes
+    .filter(page => page.file.frontmatter.Principles)
     .map(page => ({
+        // We still parse the date if needed, but we won't display it
+        date: parseDate(page.file.frontmatter.Date),
         filename: page.file.name,
-        path: page.file.path,
         principles: page.file.frontmatter.Principles
-    }))
-    .filter(item => item.principles)
-    .sort((a, b) => b.path.localeCompare(a.path));
+    }));
 
-// Create the cell content with custom formatting for links and a line break
-const cellContent = principlesContent.length > 0 
-    ? principlesContent.map(item => 
-        `* **[[${item.filename}]]**\n\n${item.principles.split('\n\n').map(line => `    ${line}`).join('\n\n')}`
-      ).join('\n\n')
-    : "    No principles Discovered.";
+// 6) Render each note’s principles in a cleaner format
+if (notesWithPrinciples.length === 0) {
+    dv.paragraph("No insights discovered this month.");
+} else {
+    // For each note, we display:
+    //    A heading with a dash + note link
+    //    Bullet points for each principle line
+    notesWithPrinciples.forEach(item => {
+        // Removed the date, but kept an em dash + note link
+        dv.header(3, `— [[${item.filename}]]`);
+        
+        // Split 'Principles' on new lines and filter out any empty lines
+        const lines = item.principles.split(/\r?\n+/).filter(line => line.trim() !== '');
+        
+        // Render each principle as a bullet
+        lines.forEach(line => {
+            dv.paragraph(`- ${line.trim()}`);
+        });
+        
+        // Optional extra spacing
+        dv.paragraph("");
+    });
+}
 
-// Render using markdown
-dv.paragraph(cellContent);
 ```
 
 ## <span style="color:rgb(220, 133, 86)">Milestones</span> ![[milestone.svg|30]]
@@ -1270,7 +1337,7 @@ const folderPath = '"01-Daily Notes"';
 // Retrieve pages from the specified date range
 const pages = dv.pages(folderPath)
     .where(page => page.Date && page.Date >= sevenDaysAgo && page.Date <= currentDate)
-    .sort(page => page.Date, 'asc');
+    .sort(page => page.Date, 'asc');  // Sorting from earliest to latest
 
 // Map to store tasks by category
 const categoryTasks = new Map();
@@ -1287,7 +1354,7 @@ function extractCategoryTasks(page) {
         if (match) {
             const category = match[1];
             if (!categoryTasks.has(category)) {
-                categoryTasks.set(category, new Map());
+                categoryTasks.set(category, []);
             }
 
             const taskText = task.text.trim();
@@ -1295,21 +1362,19 @@ function extractCategoryTasks(page) {
             let taskDate = dateMatch ? dv.date(dateMatch[1]) : null;
 
             // If the task has a date, check if it's within the last 7 days
-            if (taskDate) {
-                if (taskDate >= sevenDaysAgo) {
-                    categoryTasks.get(category).set(taskText, {
-                        taskObject: task,
-                        filePath: page.file.path,
-                        noteTitle: page.file.name
-                    });
-                }
+            if (taskDate && taskDate >= sevenDaysAgo) {
+                categoryTasks.get(category).push({
+                    taskText,
+                    taskDate,
+                    noteTitle: page.file.name
+                });
             } else {
                 // If the task has no date, check the note's Date
                 let noteDate = dv.date(page.Date);
                 if (noteDate >= sevenDaysAgo) {
-                    categoryTasks.get(category).set(taskText, {
-                        taskObject: task,
-                        filePath: page.file.path,
+                    categoryTasks.get(category).push({
+                        taskText,
+                        taskDate: noteDate,
                         noteTitle: page.file.name
                     });
                 }
@@ -1327,13 +1392,16 @@ function renderTasks() {
         dv.paragraph('<span style="color:rgb(220, 133, 86); font-weight: bold;">-- No Milestones Reached --</span>');
     } else {
         for (const [category, tasks] of categoryTasks.entries()) {
-            if (tasks.size > 0) {
+            if (tasks.length > 0) {
+                // Sort tasks within each category by date (earliest first)
+                tasks.sort((a, b) => a.taskDate - b.taskDate);
+
                 // Display the category header
                 dv.paragraph(`<span style="color:rgb(220, 133, 86); font-weight: bold;">${category}</span>`);
                 
-                // Display each completed task
-                for (const [taskText, { taskObject, filePath, noteTitle }] of tasks.entries()) {
-                    dv.paragraph(`   - [x] ${taskText}`);
+                // Display each completed task with a clickable link icon
+                for (const { taskText, noteTitle } of tasks) {
+                    dv.paragraph(`   - [x] ${taskText} [[${noteTitle}|🔗]]`);
                 }
             }
         }
@@ -1348,45 +1416,45 @@ renderTasks();
 ## <span style="color:rgb(88, 86, 220)">Targets </span> ![[crosshair.svg|24]]
 
 ```dataviewjs
-// Access the current YAML frontmatter date
-const yamlDate = dv.current().Date;
+// Access the current note's YAML frontmatter date
+const yamlDate = dv.current().date;
 
-// Get today's date
+// Check if the YAML date is valid, otherwise use the previous day's date
 const currentDate = yamlDate ? dv.date(yamlDate) : new Date();
 
-// Define the start date (2024-10-05)
+// Subtract one day from the current date
+const previousDay = currentDate instanceof Date 
+    ? new Date(currentDate.setDate(currentDate.getDate() - 1)) 
+    : currentDate.minus({ days: 1 }); // If it's a dv.date() object, use the `minus` function
+
+// Define the start date (adjust as needed)
 const startDate = dv.date("2025-01-01");
 
 // Define the folder path
 const folderPath = '"01-Daily Notes"';
 
-// Retrieve pages from the specified date range
+// Retrieve pages from the specified date range, sorted ascending
 const pages = dv.pages(folderPath)
-    .where(page => page.Date && page.Date >= startDate && page.Date <= currentDate)
-    .sort(page => page.Date, 'asc');
+    .where(page => page.date && page.date >= startDate && page.date <= previousDay)
+    .sort(page => page.date, 'asc');
 
-// Map to store tasks by category
-const categoryTasks = new Map();
+// Map to store tasks by keyword
+const keywordTasks = new Map();
 
-// Function to extract incomplete tasks by category
-function extractCategoryTasks(page) {
+// Function to extract tasks by keyword (only processes incomplete tasks)
+function extractKeywordTasks(page) {
     const tasks = page.file.tasks || [];
-
     for (const task of tasks) {
-        // Only process incomplete tasks
-        if (task.completed) continue;
-
-        const match = task.text.match(/\(([\w\s]+)::\)/);  // Match the category in parentheses
+        if (task.completed) continue;  // Only process incomplete tasks
+        const match = task.text.match(/\(([\w\s]+)::\)/);
         if (match) {
-            const category = match[1];
-            if (!categoryTasks.has(category)) {
-                categoryTasks.set(category, new Map());
+            const keyword = match[1];
+            if (!keywordTasks.has(keyword)) {
+                keywordTasks.set(keyword, new Map());
             }
-
             const taskText = task.text.trim();
-            
-            // Add task to the category
-            categoryTasks.get(category).set(taskText, {
+            // Store the task text along with its originating note title
+            keywordTasks.get(keyword).set(taskText, {
                 taskObject: task,
                 filePath: page.file.path,
                 noteTitle: page.file.name
@@ -1396,22 +1464,26 @@ function extractCategoryTasks(page) {
 }
 
 // Extract tasks from each page
-pages.forEach(page => extractCategoryTasks(page));
+pages.forEach(page => extractKeywordTasks(page));
 
-// Function to render all incomplete tasks
+// Render tasks using markdown so that wikilinks behave natively (ctrl-click opens in new pane)
 function renderTasks() {
-    if (categoryTasks.size === 0) {
-        dv.paragraph('<span style="color:rgb(88, 86, 220); font-weight: bold;">-- No Targets Found --</span>');
+    if (keywordTasks.size === 0) {
+        dv.paragraph('<span style="color:rgb(88, 86, 220); font-weight: bold;">-- No Due Targets Set</span>');
     } else {
-        for (const [category, tasks] of categoryTasks.entries()) {
+        for (const [keyword, tasks] of keywordTasks.entries()) {
             if (tasks.size > 0) {
-                // Display the category header
-                dv.paragraph(`<span style="color:rgb(88, 86, 220); font-weight: bold;">${category}</span>`);
+                // Display the keyword header
+                dv.paragraph(`<span style="color:rgb(88, 86, 220); font-weight: bold;">${keyword}</span>`);
                 
-                // Display each incomplete task
-                for (const [taskText, { taskObject, filePath, noteTitle }] of tasks.entries()) {
-                    dv.paragraph(`   - [ ] ${taskText}`);
-                }
+                // Convert the Map to an array and sort tasks by taskText (or adjust as needed)
+                const sortedTasks = Array.from(tasks.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+                
+                // Render each task as a markdown line with a native wikilink for the note
+                sortedTasks.forEach(([taskText, { noteTitle }]) => {
+                    // Render an unchecked task; using markdown wikilink syntax ensures ctrl‑click works
+                    dv.paragraph(`- [ ] ${taskText} [[${noteTitle}|🔗]]`);
+                });
             }
         }
     }

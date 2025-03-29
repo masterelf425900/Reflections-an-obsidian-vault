@@ -2,7 +2,7 @@
 Date: 2025-05-19
 creation date: 2025 Mar 19th Wed 01:08
 modification date: 2025 Mar 19th Wed 01:08
-obsidianUIMode: preview
+obsidianUIMode: 
 Sleep_Start: 00:00
 Sleep_End: 08:30
 Sleep_Time: 8:30
@@ -42,14 +42,14 @@ Milestones_Tag: Note
 Targets_Tag: Entertainment
 Reminder_Text_0: date has passed
 Reminder_Date_0: 2025-02-01
-Reminder_Text_2: simple reminder funtions
+Reminder_Text_2: simple reminder functions
 Reminder_Text_1: stops showing up in subsequent notes after
 Reminder_Date_2: 2025-02-01
 Reminder_Date_1: 2025-02-01
 
 ---
 
-<< [[2025 Mar 18th Tue|Yesterday]] | [[2025 Mar 20th Thu|Tomorrow]] >> | [[2025 Mar 22nd (W12)|Weekly]] | [[2025 Mar|Monthly]] >>   `BUTTON[Refresh]`
+<< [[2025 Mar 18th Tue|Yesterday]] | [[2025 Mar 20th Thu|Tomorrow]] >> | [[2025 Mar 22nd (W12)|Weekly]] | [[2025 Feb|Monthly]] >>   `BUTTON[Refresh]`
 ```meta-bind-embed
 [[Movies Embeds]]
 ```
